@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-multipart
+opencv-python
+numpy
+pandas
+
+# The following packages are for development and testing purposes
