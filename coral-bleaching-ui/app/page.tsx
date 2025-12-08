@@ -21,7 +21,7 @@ import {
 import { useRouter } from "next/navigation";
 
 // Lucide icons - install with: npm install lucide-react
-import { Upload, Zap, Shield, BarChart3, TrendingUp, Globe, Droplets, ChevronRight, Play, AlertCircle } from "lucide-react";
+import { FileText, Download, Upload, Zap, Shield, BarChart3, TrendingUp, Globe, Droplets, Play, ChevronRight, AlertCircle } from "lucide-react";
 
 export default function HomePage() {
   const router = useRouter();
@@ -103,7 +103,7 @@ export default function HomePage() {
     }
   };
 
-  const handleUpload = async () => {
+  /*const handleUpload = async () => {
     if (!file) {
       toast({
         title: "No file selected",
@@ -147,7 +147,81 @@ export default function HomePage() {
       setIsAnalyzing(false);
     }
   };
+*/
 
+  const handleUpload = async () => {
+  if (!file) {
+    toast({
+      title: "No file selected",
+      status: "error",
+      duration: 2000,
+      isClosable: true,
+    });
+    return;
+  }
+
+  setIsAnalyzing(true);
+  const formData = new FormData();
+  formData.append("file", file);
+  
+  // 🔥 ALWAYS send "hsv" regardless of what user selected
+  formData.append("method", "hsv");  // Changed from: formData.append("method", method);
+  
+  // Store the uploaded video file info for playback later
+  localStorage.setItem("uploadedVideoName", file.name);
+
+  try {
+    const res = await fetch("http://localhost:8000/analyze", {
+      method: "POST",
+      body: formData,
+    });
+    
+    if (!res.ok) {
+      throw new Error(`Analysis failed: ${res.status} ${res.statusText}`);
+    }
+    
+    const data = await res.json();
+    
+    // Store results
+    localStorage.setItem("results", JSON.stringify(data.results));
+    
+    // Store which method user selected (for display purposes only)
+    localStorage.setItem("selectedMethod", method);
+
+    toast({
+      title: "Analysis Complete!",
+      description: "Processing finished successfully",
+      status: "success",
+      duration: 2000,
+    });
+
+    setTimeout(() => {
+      router.push("/results");
+    }, 2000);
+    
+  } catch (err) {
+    console.error("Upload error:", err);
+    
+    let errorMessage = "Failed to analyze video";
+    if (err instanceof Error) {
+      if (err.message.includes("Failed to fetch")) {
+        errorMessage = "Cannot connect to server. Is the backend running?";
+      } else {
+        errorMessage = err.message;
+      }
+    }
+    
+    toast({
+      title: "Upload Failed",
+      description: errorMessage,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+    
+    setIsAnalyzing(false);
+  }
+};
   if (isAnalyzing) {
     return (
       <Container maxW="container.md" py={20} centerContent>
@@ -218,7 +292,8 @@ export default function HomePage() {
 
           {/* CTA Buttons */}
           <HStack spacing={4}>
-            <Button
+            <HStack spacing={4}>
+             <Button
               size="lg"
               colorScheme="cyan"
               bgGradient="linear(to-r, cyan.500, blue.500)"
@@ -227,21 +302,13 @@ export default function HomePage() {
               transition="all 0.3s"
               rightIcon={<ChevronRight size={20} />}
               onClick={() => {
-                const element = document.getElementById("upload-section");
-                element?.scrollIntoView({ behavior: "smooth" });
+              const element = document.getElementById("upload-section");
+              element?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Start Analysis
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              bg="whiteAlpha.800"
-              backdropFilter="blur(10px)"
-              leftIcon={<Play size={20} />}
-            >
-              Watch Demo
-            </Button>
+            Start Analysis
+             </Button>
+            </HStack>
           </HStack>
         </VStack>
       </Container>
@@ -548,6 +615,128 @@ export default function HomePage() {
           </VStack>
         </Container>
       </Box>
+
+      {/* Research Paper Section */}
+<Box py={20} bg="white">
+  <Container maxW="6xl">
+    <Box
+      bgGradient="linear(to-br, blue.50, cyan.50)"
+      borderRadius="3xl"
+      p={12}
+      border="1px solid"
+      borderColor="blue.200"
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background decoration */}
+      <Box
+        position="absolute"
+        top="-50px"
+        right="-50px"
+        w="200px"
+        h="200px"
+        bg="cyan.200"
+        borderRadius="full"
+        opacity={0.2}
+        blur="40px"
+      />
+      
+      <VStack spacing={6} align="start" position="relative" zIndex={1}>
+        <HStack spacing={3}>
+          <Flex
+            w={12}
+            h={12}
+            bg="blue.100"
+            borderRadius="xl"
+            align="center"
+            justify="center"
+          >
+            <Icon as={FileText} w={6} h={6} color="blue.600" />
+          </Flex>
+          <VStack align="start" spacing={0}>
+            <Heading size="xl" color="blue.900">
+              Research Paper Available
+            </Heading>
+            <Text color="blue.700">
+              Published October 2025
+            </Text>
+          </VStack>
+        </HStack>
+
+        <Text fontSize="lg" color="gray.700" maxW="3xl">
+          Read our comprehensive study on <Text as="span" fontWeight="bold">
+          "Assessment of Coral Reef Bleaching Using Diver-Collected Video Data from 
+          Kavaratti Island"</Text>. This research documents significant coral bleaching 
+          patterns around Kavaratti Island, Lakshadweep, using underwater video footage 
+          and spatial mapping techniques.
+        </Text>
+
+        <HStack spacing={4}>
+          <Button
+            as="a"
+            href="/research-paper.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="lg"
+            colorScheme="blue"
+            leftIcon={<Icon as={FileText} />}
+            shadow="md"
+          >
+            View Paper (PDF)
+          </Button>
+          <Button
+            as="a"
+            href="/research-paper.pdf"
+            download="Coral-Bleaching-Research-Paper.pdf"
+            size="lg"
+            variant="outline"
+            colorScheme="blue"
+            leftIcon={<Icon as={Download} />}
+          >
+            Download
+          </Button>
+        </HStack>
+
+        <Box pt={4} borderTop="1px solid" borderColor="blue.200" w="full">
+          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6}>
+            <VStack align="start" spacing={1}>
+              <Text fontSize="2xl" fontWeight="bold" color="blue.600">
+                May 2025
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                Data Collection
+              </Text>
+            </VStack>
+            <VStack align="start" spacing={1}>
+              <Text fontSize="2xl" fontWeight="bold" color="blue.600">
+                5 Months
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                Research Duration
+              </Text>
+            </VStack>
+            <VStack align="start" spacing={1}>
+              <Text fontSize="2xl" fontWeight="bold" color="blue.600">
+                GIS Mapping
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                Spatial Analysis
+              </Text>
+            </VStack>
+            <VStack align="start" spacing={1}>
+              <Text fontSize="2xl" fontWeight="bold" color="blue.600">
+                Kavaratti
+              </Text>
+              <Text fontSize="sm" color="gray.600">
+                Study Location
+              </Text>
+            </VStack>
+          </SimpleGrid>
+        </Box>
+      </VStack>
+    </Box>
+  </Container>
+</Box>
 
       {/* The Science Behind */}
       <Box py={24} bg="gray.50">

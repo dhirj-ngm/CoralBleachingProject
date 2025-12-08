@@ -56,6 +56,7 @@ import {
   ChevronRight,
   Zap,
   Shield,
+  Play,
 } from "lucide-react";
 
 interface BoxCoords {
@@ -84,16 +85,23 @@ interface Results {
 }
 
 export default function ResultsPage() {
+  // ✅ DECLARE STATE HERE (at component level, NOT inside useEffect)
   const [comparisonMode, setComparisonMode] = useState(false);
   const [yoloResults, setYoloResults] = useState<Results | null>(null);
   const [hsvResults, setHsvResults] = useState<Results | null>(null);
   const [selectedFrame, setSelectedFrame] = useState<FrameResult | null>(null);
   const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
+  const [uploadedVideoName, setUploadedVideoName] = useState<string | null>(null);
+  const [selectedMethod, setSelectedMethod] = useState<string>("hsv");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // ✅ NOW use these states inside useEffect
   useEffect(() => {
     const stored = localStorage.getItem("results");
+    const videoName = localStorage.getItem("uploadedVideoName");
+    const method = localStorage.getItem("selectedMethod");
+    
     if (stored) {
       const parsed = JSON.parse(stored);
       setYoloResults(parsed);
@@ -110,18 +118,34 @@ export default function ResultsPage() {
         },
       });
     }
-  }, []);
+    
+    if (videoName) {
+      setUploadedVideoName(videoName);
+    }
+    
+    if (method) {
+      setSelectedMethod(method);
+    }
+  }, []); 
 
-  if (!yoloResults) {
+    if (!yoloResults) {
     return (
       <Container maxW="container.md" py={20} centerContent>
-        <VStack spacing={4}>
+        <VStack spacing={6}>
+          <Box
+            w="16"
+            h="16"
+            borderWidth="4px"
+            borderColor="cyan.500"
+            borderTopColor="transparent"
+            borderRadius="full"
+            animation="spin 1s linear infinite"
+          />
           <Heading size="lg">Loading results...</Heading>
         </VStack>
       </Container>
     );
-  }
-
+    }
   const pieData = [
     { name: "Bleached", value: yoloResults.summary.bleached, color: "#ef4444" },
     { name: "Healthy", value: yoloResults.summary.healthy, color: "#10b981" },
@@ -268,6 +292,68 @@ export default function ResultsPage() {
                 </Stat>
               </Box>
             </SimpleGrid>
+
+
+      {/* Video Player Section */}
+<Box bg="white" p={8} borderRadius="2xl" border="1px solid" borderColor="gray.200" shadow="sm">
+  <Flex justify="space-between" align="center" mb={6}>
+    <VStack align="start" spacing={1}>
+      <Heading size="md">Original Video</Heading>
+      <Text fontSize="sm" color="gray.600">
+        {uploadedVideoName || "Uploaded video preview"}
+      </Text>
+    </VStack>
+    <Badge colorScheme="blue" fontSize="sm" px={3} py={1}>
+      {selectedMethod === "yolo" ? "YOLOv8" : "HSV"} Analysis
+    </Badge>
+  </Flex>
+
+  <Box
+    position="relative"
+    borderRadius="xl"
+    overflow="hidden"
+    bg="gray.900"
+    aspectRatio={16 / 9}
+  >
+    {uploadedVideoName ? (
+      <Flex
+        w="full"
+        h="full"
+        align="center"
+        justify="center"
+        direction="column"
+        gap={4}
+        p={8}
+      >
+        <Icon as={Play} w={16} h={16} color="white" opacity={0.8} />
+        <VStack spacing={2}>
+          <Text color="white" fontSize="lg" fontWeight="semibold">
+            {uploadedVideoName}
+          </Text>
+          <Text color="whiteAlpha.700" fontSize="sm">
+          </Text>
+        </VStack>
+      </Flex>
+    ) : (
+      <Flex w="full" h="full" align="center" justify="center">
+        <Text color="whiteAlpha.600">No video available</Text>
+      </Flex>
+    )}
+  </Box>
+
+  <HStack mt={4} spacing={3} justify="center">
+    <Badge colorScheme="green" fontSize="xs">
+      <HStack spacing={1}>
+        <Box w={2} h={2} bg="green.500" borderRadius="full" />
+        <Text>Analysis Complete</Text>
+      </HStack>
+    </Badge>
+    <Text fontSize="sm" color="gray.600">•</Text>
+    <Text fontSize="sm" color="gray.600">
+      {yoloResults.frames.length} frames analyzed
+    </Text>
+  </HStack>
+</Box>
 
             {/* Charts Row */}
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
