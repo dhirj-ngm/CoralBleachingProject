@@ -1,0 +1,13 @@
+# Locally supplied source footage. Keep large raw videos in their original location.
+/kavaratti videos_17-25/
+
+# Reproducible Phase 1 extraction output; metadata manifests are tracked.
+/generated/
+
+# Local Python bytecode from the preparation scripts.
+__pycache__/
+*.pyc
+
+# Local frontend build and dependency directories.
+**/node_modules/
+**/.next/

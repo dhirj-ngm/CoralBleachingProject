@@ -6,8 +6,8 @@ import { Box } from "@chakra-ui/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Coral Bleaching Detection | AI-Powered Reef Monitoring",
-  description: "Advanced AI detection meets scientific validation. Upload reef footage and get instant, research-grade bleaching analysis with dual-method comparison.",
+  title: "Coral Bleaching Project | Measured Comparison",
+  description: "External image benchmark and method-dependent Kavaratti video estimates with source and validation limits.",
   keywords: "coral bleaching, reef monitoring, AI detection, YOLOv8, HSV analysis, marine conservation",
 };
 

@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Local comparison dashboard
 
-## Getting Started
+The dashboard displays the measured external image benchmark and six-video
+Kavaratti estimates. It never derives an accuracy claim from the disagreement
+between YOLO and HSV. Its static data snapshot comes from
+`python3 scripts/publish_summary.py` at the repository root.
 
-First, run the development server:
+## Start locally
+
+From the repository root, after staging the Kaggle archives and recovered
+`best.pt` as described in [the comparison report](../docs/EXTERNAL_BENCHMARK_AND_KAVARATTI.md):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python3 -m venv generated/external/venv
+generated/external/venv/bin/pip install -r coral-bleaching-ui/backend/requirements.txt
+generated/external/venv/bin/python scripts/compare_methods.py
+python3 scripts/export_locations.py
+python3 scripts/publish_summary.py
+python3 scripts/validate_comparison.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the upload API in one terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+generated/external/venv/bin/uvicorn main:app --app-dir coral-bleaching-ui/backend --host 127.0.0.1 --port 8000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start the frontend in another terminal:
 
-## Learn More
+```bash
+cd coral-bleaching-ui
+npm ci
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open <http://localhost:3000>. The published six-video results work without the
+upload API. Uploading a new video requires it; uploads and extracted temporary
+frames are deleted after analysis. The API returns method estimates, not an
+accuracy score. Raw footage, datasets, weights, and generated images remain in
+Git-ignored directories.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run `npm run build` for the frontend production check. The API health endpoint
+is <http://127.0.0.1:8000/health>. The location download contains video-level
+workbook endpoints only, with no inferred route or frame GPS.

@@ -1,0 +1,167 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6216,
+            10.5574
+          ],
+          [
+            72.6226,
+            10.5555
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "17",
+        "location_group": "17 to 19",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 16,
+        "paired_frames": 10,
+        "paired_yolo_estimate_pct": 4.9682,
+        "paired_hsv_color_estimate_pct": 84.5651,
+        "mean_absolute_disagreement_points": 79.5969,
+        "reference_status": "unverified estimates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6216,
+            10.5574
+          ],
+          [
+            72.6226,
+            10.5555
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "19",
+        "location_group": "17 to 19",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 44,
+        "paired_frames": 40,
+        "paired_yolo_estimate_pct": 23.8351,
+        "paired_hsv_color_estimate_pct": 63.3182,
+        "mean_absolute_disagreement_points": 46.4122,
+        "reference_status": "unverified estimates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6224,
+            10.5496
+          ],
+          [
+            72.6237,
+            10.5519
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "21",
+        "location_group": "21",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 28,
+        "paired_frames": 28,
+        "paired_yolo_estimate_pct": 48.1738,
+        "paired_hsv_color_estimate_pct": 73.8412,
+        "mean_absolute_disagreement_points": 36.6818,
+        "reference_status": "unverified estimates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6225,
+            10.5525
+          ],
+          [
+            72.6208,
+            10.553
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "22",
+        "location_group": "22",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 54,
+        "paired_frames": 51,
+        "paired_yolo_estimate_pct": 56.9222,
+        "paired_hsv_color_estimate_pct": 85.2045,
+        "mean_absolute_disagreement_points": 43.7601,
+        "reference_status": "unverified estimates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6272,
+            10.5596
+          ],
+          [
+            72.6279,
+            10.5616
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "24",
+        "location_group": "24",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 65,
+        "paired_frames": 61,
+        "paired_yolo_estimate_pct": 60.7181,
+        "paired_hsv_color_estimate_pct": 85.1731,
+        "mean_absolute_disagreement_points": 28.2656,
+        "reference_status": "unverified estimates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            72.6327,
+            10.57
+          ],
+          [
+            72.6331,
+            10.571
+          ]
+        ]
+      },
+      "properties": {
+        "video_id": "25",
+        "location_group": "25",
+        "coordinate_precision": "workbook start/end for video or video group; not frame GPS",
+        "frames": 58,
+        "paired_frames": 50,
+        "paired_yolo_estimate_pct": 41.0762,
+        "paired_hsv_color_estimate_pct": 58.1384,
+        "mean_absolute_disagreement_points": 37.0184,
+        "reference_status": "unverified estimates"
+      }
+    }
+  ]
+}

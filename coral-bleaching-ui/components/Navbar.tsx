@@ -1,8 +1,7 @@
 "use client";
 
-import { Box, Flex, HStack, Text, Link as ChakraLink, Container, Icon } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, Link as ChakraLink, Container } from "@chakra-ui/react";
 import Link from "next/link";
-import { Waves } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -20,7 +19,6 @@ export default function Navbar() {
         <Flex justify="space-between" align="center">
           {/* Logo / Title */}
           <HStack spacing={2} as={Link} href="/" _hover={{ textDecoration: "none" }}>
-            <Icon as={Waves} w={8} h={8} color="cyan.600" />
             <Text
               fontSize="xl"
               fontWeight="extrabold"

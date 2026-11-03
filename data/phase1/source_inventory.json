@@ -1,0 +1,91 @@
+{
+  "description": "User-supplied local Kavaratti videos; hashes identify these exact files.",
+  "extraction": "FFmpeg fps=fps=1:start_time=0:round=near, JPEG quality 3; timestamps are 1 Hz output grid seconds from video start.",
+  "videos": [
+    {
+      "video_id": "17",
+      "path": "kavaratti videos_17-25/17.MP4",
+      "size_bytes": 97120000,
+      "sha256": "3f05bac4e9c4cda828ab0e7ef464e4adb531b8e7e271b9cbdd22cb0a4284b11a",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 931,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 15.532183,
+      "container_creation_time_utc": "2025-05-11T04:35:11.000000Z"
+    },
+    {
+      "video_id": "19",
+      "path": "kavaratti videos_17-25/19.MP4",
+      "size_bytes": 272034551,
+      "sha256": "1565ec5b0f2d78f259bbf266841c0bcffb5bd5c9ff392f09abd5d30ae03148c6",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 2609,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 43.526817,
+      "container_creation_time_utc": "2025-05-11T04:37:51.000000Z"
+    },
+    {
+      "video_id": "21",
+      "path": "kavaratti videos_17-25/21.MP4",
+      "size_bytes": 174147478,
+      "sha256": "f39c381890d289cf45365ab6064ba29fdf3a0cad5747e7299e79b40c952089a4",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 1670,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 27.861333,
+      "container_creation_time_utc": "2025-05-11T04:40:22.000000Z"
+    },
+    {
+      "video_id": "22",
+      "path": "kavaratti videos_17-25/22.MP4",
+      "size_bytes": 336062461,
+      "sha256": "9e55b3c41fd272ce75e43290537f12d4bbbbcfe14aa211aab6bbc6878d4f02ee",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 3237,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 54.00395,
+      "container_creation_time_utc": "2025-05-11T04:41:05.000000Z"
+    },
+    {
+      "video_id": "24",
+      "path": "kavaratti videos_17-25/24.MP4",
+      "size_bytes": 405314361,
+      "sha256": "e523e8d055659148d000a3430cc44ab6ea5a8fc73acb1c4eb125452bec6bbc5a",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 3887,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 64.848117,
+      "container_creation_time_utc": "2025-05-11T04:59:57.000000Z"
+    },
+    {
+      "video_id": "25",
+      "path": "kavaratti videos_17-25/25.MP4",
+      "size_bytes": 363830488,
+      "sha256": "1175e3afbe6cd7155010ff4471d32a6cd131941e0e253368bc67042074e2b3f3",
+      "codec": "hevc",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "60000/1001",
+      "source_frame_count": 3494,
+      "start_time_seconds": 0.0,
+      "duration_seconds": 58.291567,
+      "container_creation_time_utc": "2025-05-11T05:01:15.000000Z"
+    }
+  ],
+  "ffmpeg_version": "ffmpeg version n9.0.2 Copyright (c) 2000-2026 the FFmpeg developers"
+}

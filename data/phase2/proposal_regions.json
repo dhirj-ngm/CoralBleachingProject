@@ -1,0 +1,33 @@
+{
+  "coordinate_size": [480, 270],
+  "split_by_video": {
+    "17": "train", "19": "train", "21": "development",
+    "22": "test", "24": "train", "25": "test"
+  },
+  "samples": [
+    {"video_id":"17","timestamp_seconds":1,"scene":"dense bright branching reef","ambiguity":"White branch tips may be naturally pale or sunlit.","regions":[["healthy",300,85,345,130],["bleached",38,152,79,190]]},
+    {"video_id":"17","timestamp_seconds":5,"scene":"shaded dense reef","ambiguity":"Shadowed branches and pale tips need colony-level inspection.","regions":[["healthy",128,82,179,132],["bleached",393,26,430,65]]},
+    {"video_id":"17","timestamp_seconds":10,"scene":"bright close reef","ambiguity":"High exposure makes pale coral uncertain.","regions":[["healthy",83,140,130,180],["bleached",320,135,363,179]]},
+    {"video_id":"17","timestamp_seconds":14,"scene":"close pale branching colony","ambiguity":"Pale branching species versus true bleaching is unresolved.","regions":[["healthy",78,40,126,87],["bleached",245,160,290,204]]},
+    {"video_id":"19","timestamp_seconds":1,"scene":"dense brown and pale colonies","ambiguity":"Pale edges and highlights may not be bleached tissue.","regions":[["healthy",224,115,270,159],["bleached",103,203,144,240]]},
+    {"video_id":"19","timestamp_seconds":14,"scene":"reef with open water and fish","ambiguity":"Fish and distant reef must stay background or ignore.","regions":[["background",386,43,449,101],["healthy",152,163,203,214]]},
+    {"video_id":"19","timestamp_seconds":29,"scene":"shaded reef and water","ambiguity":"Dark colony boundaries and water haze are uncertain.","regions":[["background",410,49,457,113],["healthy",106,101,152,145]]},
+    {"video_id":"19","timestamp_seconds":42,"scene":"distant low-contrast reef","ambiguity":"Haze prevents reliable tissue-color judgment.","regions":[["background",350,20,427,75],["healthy",112,185,164,229]]},
+    {"video_id":"21","timestamp_seconds":1,"scene":"heavy motion blur","ambiguity":"Coral and water boundary is not reliably visible; leave all pixels ignored.","regions":[]},
+    {"video_id":"21","timestamp_seconds":9,"scene":"overhead reef with blue water","ambiguity":"Bright coral may be sunlight or bleaching.","regions":[["background",190,206,266,250],["healthy",279,58,326,105]]},
+    {"video_id":"21","timestamp_seconds":18,"scene":"turbid overhead reef","ambiguity":"Haze and color cast weaken tissue interpretation.","regions":[["background",176,212,247,253],["healthy",110,47,159,96]]},
+    {"video_id":"21","timestamp_seconds":26,"scene":"surface distortion and glare","ambiguity":"Refraction and glare obscure the reef; leave all pixels ignored.","regions":[]},
+    {"video_id":"22","timestamp_seconds":1,"scene":"dark reef with surface distortion","ambiguity":"Shadow and refraction obscure coral boundaries.","regions":[["healthy",327,67,378,113]]},
+    {"video_id":"22","timestamp_seconds":18,"scene":"reef wall beside open water","ambiguity":"Yellow highlights on reef may be lighting.","regions":[["background",359,156,428,215],["healthy",123,60,179,112]]},
+    {"video_id":"22","timestamp_seconds":36,"scene":"white branching coral under shadow","ambiguity":"White branches could be naturally pale, dead, or bleached.","regions":[["bleached",264,99,308,146],["healthy",378,151,424,199]]},
+    {"video_id":"22","timestamp_seconds":52,"scene":"mixed bright and dark reef","ambiguity":"Exposure and species differences affect color reading.","regions":[["healthy",182,65,232,111],["bleached",377,61,423,109]]},
+    {"video_id":"24","timestamp_seconds":1,"scene":"reef edge above white sand","ambiguity":"White sand must not be called bleached coral.","regions":[["background",374,164,427,218],["healthy",79,68,131,115]]},
+    {"video_id":"24","timestamp_seconds":21,"scene":"open water, fish, and coral mound","ambiguity":"Fish should be excluded from coral labels.","regions":[["background",197,17,266,72],["healthy",270,177,323,228]]},
+    {"video_id":"24","timestamp_seconds":43,"scene":"distant dark reef and open water","ambiguity":"Distant reef cannot be confidently classified.","regions":[["background",207,21,278,77],["healthy",81,188,135,232]]},
+    {"video_id":"24","timestamp_seconds":63,"scene":"patchy reef with sand","ambiguity":"Small pale patches may be sand or coral skeleton.","regions":[["background",360,126,412,171],["healthy",165,89,212,135]]},
+    {"video_id":"25","timestamp_seconds":1,"scene":"close dense branching coral","ambiguity":"Pale branches may reflect strong illumination.","regions":[["healthy",219,79,271,126],["bleached",56,184,98,222]]},
+    {"video_id":"25","timestamp_seconds":19,"scene":"distant branching reef and water","ambiguity":"Haze changes apparent tissue color.","regions":[["background",218,17,294,75],["healthy",169,167,220,213]]},
+    {"video_id":"25","timestamp_seconds":38,"scene":"branching colony with fish","ambiguity":"Fish and branch gaps must be excluded during tracing.","regions":[["background",229,25,280,65],["healthy",173,154,220,201]]},
+    {"video_id":"25","timestamp_seconds":56,"scene":"white boulder colony beside sand","ambiguity":"White colony may be bleaching, natural pigmentation, or dead skeleton; expert decision required.","regions":[["background",80,210,130,248],["bleached",200,140,250,183],["healthy",105,67,157,113]]}
+  ]
+}
